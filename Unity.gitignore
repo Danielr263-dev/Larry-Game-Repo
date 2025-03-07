@@ -73,7 +73,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Ignore Unity auto-generated files
+# Unity-specific ignores
 Library/
 Temp/
 Logs/
+UserSettings/

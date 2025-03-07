@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float walkSpeed = 2.5f;  // Walking speed
+    public float runSpeed = 5.0f;   // Running speed (Shift key)
+    
     private Animator animator;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -15,27 +17,49 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Get movement input
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Get input
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        // Create movement vector
+        movement = new Vector2(moveX, moveY);
 
         // Normalize movement to prevent diagonal speed boost
-        movement = movement.normalized;
+        if (movement.sqrMagnitude > 1)
+        {
+            movement = movement.normalized;
+        }
 
-        // Check if the player is moving
+        // Check if player is moving
         bool isMoving = movement.sqrMagnitude > 0;
         animator.SetBool("isMoving", isMoving);
 
-        // Update animator values if moving
         if (isMoving)
         {
             animator.SetFloat("MoveX", movement.x);
             animator.SetFloat("MoveY", movement.y);
         }
+        else
+        {
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", 0);
+        }
     }
 
     void FixedUpdate()
     {
-        rb.velocity = movement * moveSpeed;
+        // Stop movement instantly when not moving
+        if (movement.sqrMagnitude == 0)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else
+        {
+            // Choose speed based on running or walking
+            float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+
+            // Apply movement speed
+            rb.velocity = movement * speed;
+        }
     }
 }

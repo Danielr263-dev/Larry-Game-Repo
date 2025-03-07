@@ -690,6 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 630676918}
   - component: {fileID: 630676919}
+  - component: {fileID: 630676920}
   m_Layer: 0
   m_Name: Door-Trigger-2
   m_TagString: Untagged
@@ -757,6 +758,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.72052, y: 2.2203445}
   m_EdgeRadius: 0
+--- !u!114 &630676920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630676917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39938c9be4e13924588c6e53e6f903d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: TBD Room Scene
 --- !u!1 &717093245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1448,7 @@ GameObject:
   - component: {fileID: 2141545469}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1614,7 +1628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5905c87356c7f24585f23e546a0c294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  walkSpeed: 2.5
+  runSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

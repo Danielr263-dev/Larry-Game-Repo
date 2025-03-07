@@ -2,35 +2,32 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Public variable to control movement speed
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Animator animator;
-    private Vector2 movement;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        // Get player input
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Get input from the player
+        float moveX = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow keys
+        float moveY = 0f;
 
-        // Normalize movement to avoid diagonal speed boost
-        movement = movement.normalized;
+        // Use Up/Down Arrow keys for vertical movement
+        if (Input.GetKey(KeyCode.UpArrow))
+            moveY = 1f; // Move up
+        else if (Input.GetKey(KeyCode.DownArrow))
+            moveY = -1f; // Move down
 
-        // Set Animator parameters
-        animator.SetFloat("MoveX", movement.x);
-        animator.SetFloat("MoveY", movement.y);
-        animator.SetBool("isMoving", movement.magnitude > 0);
-    }
+        float moveZ = Input.GetAxis("Vertical");   // W/S or Up/Down Arrow keys
 
-    void FixedUpdate()
-    {
+        // Create a movement vector based on input
+        Vector3 movement = new Vector3(moveX, moveY, moveZ);
+
+        // Normalize the vector to prevent faster diagonal movement
+        if (movement.magnitude > 1f)
+            movement = movement.normalized;
+
         // Move the player
-        rb.velocity = movement * moveSpeed;
+        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
     }
 }

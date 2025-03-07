@@ -435,7 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2141545465}
   boundary: {x: 2, y: 2}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.5
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &550181520
 GameObject:

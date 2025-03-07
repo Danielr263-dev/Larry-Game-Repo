@@ -5,11 +5,12 @@ public class CameraFollow : MonoBehaviour
     public Transform player; // Reference to the player's transform
     public Vector2 boundary = new Vector2(2f, 2f); // Boundary area (X and Y) where the camera starts following
 
-    public float smoothSpeed = 0.125f; // Speed at which the camera follows the player
-    public Vector3 offset; // Offset of the camera from the player
+    public float smoothSpeed = 0.2f; // Speed at which the camera follows the player
+    public Vector3 offset = new Vector3(0, 10, -10); // Offset of the camera from the player
 
     private Vector3 _cameraMinBoundary; // Minimum camera boundary in world space
     private Vector3 _cameraMaxBoundary; // Maximum camera boundary in world space
+    private Vector3 _velocity = Vector3.zero; // Used for SmoothDamp
 
     void Start()
     {
@@ -20,7 +21,10 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         if (player == null)
+        {
+            Debug.LogError("Player reference is not assigned!");
             return;
+        }
 
         // Calculate the player's position relative to the camera's boundaries
         Vector3 playerPosition = player.position + offset;
@@ -39,8 +43,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         // Smoothly move the camera towards the desired position
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, smoothSpeed);
 
         // Recalculate the camera's boundaries after moving
         CalculateCameraBoundaries();

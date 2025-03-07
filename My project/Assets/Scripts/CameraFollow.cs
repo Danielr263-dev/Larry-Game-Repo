@@ -8,6 +8,10 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.2f; // Speed at which the camera follows the player
     public Vector3 offset = new Vector3(0, 10, -10); // Offset of the camera from the player
 
+    // Hardcoded map bounds (calculated from offset and size)
+    private Vector2 mapMinBounds = new Vector2(-8.90681f, -5.21200f); // Minimum bounds of the map
+    private Vector2 mapMaxBounds = new Vector2(108.85709f, 5.11932f); // Maximum bounds of the map
+
     private Vector3 _cameraMinBoundary; // Minimum camera boundary in world space
     private Vector3 _cameraMaxBoundary; // Maximum camera boundary in world space
     private Vector3 _velocity = Vector3.zero; // Used for SmoothDamp
@@ -43,7 +47,13 @@ public class CameraFollow : MonoBehaviour
         }
 
         // Smoothly move the camera towards the desired position
-        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, smoothSpeed);
+        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, smoothSpeed);
+
+        // Clamp the camera's position to the map bounds
+        smoothedPosition = ClampCameraToMap(smoothedPosition);
+
+        // Update the camera's position
+        transform.position = smoothedPosition;
 
         // Recalculate the camera's boundaries after moving
         CalculateCameraBoundaries();
@@ -60,5 +70,18 @@ public class CameraFollow : MonoBehaviour
         _cameraMaxBoundary.x -= boundary.x;
         _cameraMinBoundary.y += boundary.y;
         _cameraMaxBoundary.y -= boundary.y;
+    }
+
+    Vector3 ClampCameraToMap(Vector3 position)
+    {
+        // Calculate the camera's half-width and half-height based on its viewport
+        float cameraHalfHeight = Camera.main.orthographicSize; // For orthographic cameras
+        float cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
+
+        // Clamp the camera's position to the map bounds
+        float clampedX = Mathf.Clamp(position.x, mapMinBounds.x + cameraHalfWidth, mapMaxBounds.x - cameraHalfWidth);
+        float clampedY = Mathf.Clamp(position.y, mapMinBounds.y + cameraHalfHeight, mapMaxBounds.y - cameraHalfHeight);
+
+        return new Vector3(clampedX, clampedY, position.z);
     }
 }

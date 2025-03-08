@@ -434,8 +434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2141545465}
-  boundary: {x: 1.5, y: 1.5}
-  smoothSpeed: 0.65
+  boundary: {x: 3.5, y: 3.5}
+  smoothSpeed: 0.5
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &550181520
 GameObject:
@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0887d4838c0ae5249a0ab6b7767aa9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
 --- !u!114 &2141545469
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; // Required for coroutine
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,16 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        // Move player to the correct spawn point when entering a new scene
+        SetSpawnPoint();
+
+        // Temporarily disable the player's collider to prevent instant re-triggering
+        Collider2D playerCollider = GetComponent<Collider2D>();
+        if (playerCollider != null)
+        {
+            StartCoroutine(DisableColliderTemporarily(playerCollider));
+        }
     }
 
     void Update()
@@ -61,5 +72,60 @@ public class PlayerController : MonoBehaviour
             // Apply movement speed
             rb.velocity = movement * speed;
         }
+    }
+
+    private void SetSpawnPoint()
+    {
+        // Check if SpawnManager exists to get the last exit name
+        if (SpawnManager.Instance == null)
+        {
+            Debug.LogError("🚨 SpawnManager.Instance is NULL! Make sure it is initialized.");
+            return;
+        }
+
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogError("🚨 No SpawnPoints found in the scene! Ensure you have GameObjects tagged as 'SpawnPoint'.");
+            return;
+        }
+
+        Debug.Log("✅ Found " + spawnPoints.Length + " SpawnPoints in the scene.");
+
+        foreach (GameObject spawn in spawnPoints)
+        {
+            Debug.Log("🔍 Checking SpawnPoint: " + spawn.name);
+            
+            if (spawn.name == SpawnManager.Instance.lastExitName)
+            {
+                Debug.Log("✅ Player spawning at: " + spawn.name);
+                transform.position = spawn.transform.position; // Move player to correct spawn point
+
+                // Move player slightly forward to prevent immediate re-triggering
+                transform.position += new Vector3(0, 0.5f, 0);
+
+                break;
+            }
+        }
+    }
+
+    IEnumerator DisableColliderTemporarily(Collider2D collider)
+    {
+        Debug.Log("⏳ Temporarily disabling player collider to prevent re-trigger...");
+        collider.enabled = false;
+        yield return new WaitForSeconds(1.0f); // Adjust timing if needed
+        collider.enabled = true;
+        Debug.Log("✅ Player collider re-enabled.");
+    }
+
+    public float GetMoveX()
+    {
+        return movement.x;
+    }
+
+    public float GetMoveY()
+    {
+        return movement.y;
     }
 }

@@ -30,4 +30,5 @@ public class PlayerMovement : MonoBehaviour
         // Move the player
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
     }
+    
 }

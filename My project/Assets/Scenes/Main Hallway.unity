@@ -2190,7 +2190,7 @@ Transform:
   m_GameObject: {fileID: 1525999253}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.83, y: -3.5, z: -0.0019830514}
+  m_LocalPosition: {x: 19.91, y: -3.6, z: -0.0019830514}
   m_LocalScale: {x: 2.355806, y: 2.0761926, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2288,8 +2288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathData: {fileID: 11400000, guid: 394a30070a5fa214c98e331241320a69, type: 2}
-  moveSpeed: 3
-  rotationSpeed: 5
+  moveSpeed: 11
+  rotationSpeed: 2
+  pauseDuration: 2
 --- !u!70 &1525999259
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

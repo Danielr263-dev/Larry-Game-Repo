@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Path1
   m_EditorClassIdentifier: 
   waypoints:
-  - {x: 32.83, y: -3.5, z: -0.001}
-  - {x: 32.8, y: 0.89, z: -0.001}
+  - {x: 19.91, y: -3.6, z: -0.001}
+  - {x: 19.91, y: 1, z: -0.001}

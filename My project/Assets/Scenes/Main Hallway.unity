@@ -155,6 +155,7 @@ Transform:
   - {fileID: 817446791}
   - {fileID: 1263570512}
   - {fileID: 1278478726}
+  - {fileID: 2136306965}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &52587533
@@ -2084,7 +2085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263570512}
   m_Layer: 0
-  m_Name: Spawn_fromWeapon
+  m_Name: SpawnfromWeaponR
   m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2099,7 +2100,7 @@ Transform:
   m_GameObject: {fileID: 1263570511}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.75728, y: -4.7432, z: 0.08902382}
+  m_LocalPosition: {x: 97.07728, y: -4.4232, z: -0.08852624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Starter Room
-  exitName: 
+  exitName: SpawnfromHall(Starter)
 --- !u!61 &1278478725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2822,6 +2823,37 @@ Transform:
   - {fileID: 587067977}
   - {fileID: 80841302}
   m_Father: {fileID: 1515192454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2136306964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2136306965}
+  m_Layer: 0
+  m_Name: Spawn_fromStarter
+  m_TagString: SpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2136306965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136306964}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.04, y: 0.29, z: 0.02848234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9752818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141545462
 GameObject:

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections; // Required for coroutine
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,13 +16,6 @@ public class PlayerController : MonoBehaviour
 
         // Move player to the correct spawn point when entering a new scene
         SetSpawnPoint();
-
-        // Temporarily disable the player's collider to prevent instant re-triggering
-        Collider2D playerCollider = GetComponent<Collider2D>();
-        if (playerCollider != null)
-        {
-            StartCoroutine(DisableColliderTemporarily(playerCollider));
-        }
     }
 
     void Update()
@@ -74,58 +66,72 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetSpawnPoint()
+ private void SetSpawnPoint()
+{
+    // Check if SpawnManager exists to get the last exit name
+    if (SpawnManager.Instance == null)
     {
-        // Check if SpawnManager exists to get the last exit name
-        if (SpawnManager.Instance == null)
+        Debug.LogError("🚨 SpawnManager.Instance is NULL! Make sure it is initialized.");
+        return;
+    }
+
+    string lastExit = SpawnManager.Instance.lastExitName;
+    Debug.Log($"🔄 Looking for SpawnPoint matching: {lastExit}");
+
+    GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+    if (spawnPoints.Length == 0)
+    {
+        Debug.LogError("🚨 No SpawnPoints found in the scene! Ensure you have GameObjects tagged as 'SpawnPoint'.");
+        return;
+    }
+
+    Debug.Log($"✅ Found {spawnPoints.Length} SpawnPoints in the scene.");
+
+    bool foundSpawn = false; // Flag to check if a valid spawn was found
+
+    foreach (GameObject spawn in spawnPoints)
+    {
+        Debug.Log($"🔍 Checking SpawnPoint: {spawn.name} at Position: {spawn.transform.position}");
+
+        if (spawn.name == lastExit)
         {
-            Debug.LogError("🚨 SpawnManager.Instance is NULL! Make sure it is initialized.");
-            return;
-        }
+            Debug.Log($"✅ Player spawning at: {spawn.name} (Position: {spawn.transform.position})");
 
-        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+            // Move player to correct spawn point
+            transform.position = spawn.transform.position;
 
-        if (spawnPoints.Length == 0)
-        {
-            Debug.LogError("🚨 No SpawnPoints found in the scene! Ensure you have GameObjects tagged as 'SpawnPoint'.");
-            return;
-        }
+            // Prevent immediate re-triggering (move slightly in opposite direction)
+            Vector3 offset = Vector3.zero;
 
-        Debug.Log("✅ Found " + spawnPoints.Length + " SpawnPoints in the scene.");
-
-        foreach (GameObject spawn in spawnPoints)
-        {
-            Debug.Log("🔍 Checking SpawnPoint: " + spawn.name);
+            if (lastExit.Contains("toWeapon"))      // Coming from Hallway to Weapon Room
+                offset = new Vector3(0, -0.5f, 0);
+            else if (lastExit.Contains("fromWeapon")) // Coming from Weapon Room to Hallway
+                offset = new Vector3(0, 0.5f, 0);
             
-            if (spawn.name == SpawnManager.Instance.lastExitName)
-            {
-                Debug.Log("✅ Player spawning at: " + spawn.name);
-                transform.position = spawn.transform.position; // Move player to correct spawn point
+            transform.position += offset;
 
-                // Move player slightly forward to prevent immediate re-triggering
-                transform.position += new Vector3(0, 0.5f, 0);
-
-                break;
-            }
+            foundSpawn = true;
+            break;
         }
     }
 
-    IEnumerator DisableColliderTemporarily(Collider2D collider)
+    if (!foundSpawn)
     {
-        Debug.Log("⏳ Temporarily disabling player collider to prevent re-trigger...");
-        collider.enabled = false;
-        yield return new WaitForSeconds(1.0f); // Adjust timing if needed
-        collider.enabled = true;
-        Debug.Log("✅ Player collider re-enabled.");
+        Debug.LogError($"❌ No matching SpawnPoint found for '{lastExit}'. Check if the name is correct.");
     }
+}
+
+
 
     public float GetMoveX()
     {
-        return movement.x;
+    return movement.x;
     }
 
-    public float GetMoveY()
+public float GetMoveY()
     {
-        return movement.y;
+    return movement.y;
     }
+
 }

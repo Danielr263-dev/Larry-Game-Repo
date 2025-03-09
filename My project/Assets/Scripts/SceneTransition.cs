@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -26,22 +27,29 @@ public class SceneTransition : MonoBehaviour
         {
             PlayerController player = other.GetComponent<PlayerController>();
 
+            Debug.Log($"🚪 Player entered transition trigger for {sceneToLoad} from {gameObject.name}");
+
+            // Ensure player is facing the door before transitioning
             if (player != null && IsFacingDoor(player))
             {
+                Debug.Log($"✅ Player is facing the door, transitioning to {sceneToLoad}");
+
                 if (!string.IsNullOrEmpty(sceneToLoad))
                 {
-                    Debug.Log($"✅ Transitioning to {sceneToLoad} via {exitName}");
-
-                    canTransition = false; // Prevent immediate re-trigger
-                    transitionCollider.enabled = false; // Disable collider to avoid looping
-
+                    canTransition = false; // Prevent re-triggering
                     SpawnManager.Instance.lastExitName = exitName; // Store the last exit
-                    SceneManager.LoadScene(sceneToLoad);
+
+                    Debug.Log($"✅ Stored lastExitName: {SpawnManager.Instance.lastExitName}");
+                    StartCoroutine(TransitionScene()); // Delayed transition to avoid issues
                 }
                 else
                 {
-                    Debug.LogError("🚨 SceneTransition Error: sceneToLoad is empty! Assign a scene name in the Inspector.");
+                    Debug.LogError("❌ SceneTransition Error: sceneToLoad is empty! Assign a scene name in the Inspector.");
                 }
+            }
+            else
+            {
+                Debug.Log("❌ Player is NOT facing the door, transition blocked!");
             }
         }
     }
@@ -50,9 +58,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (transitionCollider != null)
         {
-            Debug.Log("🔄 Transition trigger re-enabled.");
             transitionCollider.enabled = true;
-            canTransition = true; // Allow transitioning again
         }
     }
 
@@ -60,10 +66,26 @@ public class SceneTransition : MonoBehaviour
     {
         Vector2 playerDirection = new Vector2(player.GetMoveX(), player.GetMoveY());
 
-        // Check if the player is moving towards the door trigger
-        Vector2 toDoor = (transform.position - player.transform.position).normalized;
+        // If player is standing still, assume they were facing the last direction
+        if (playerDirection.sqrMagnitude == 0)
+        {
+            Debug.Log("🔄 Player was not moving, allowing transition.");
+            return true;
+        }
 
-        // Only transition if player is facing towards the door
-        return Vector2.Dot(playerDirection, toDoor) > 0.5f;
+        // Check if the player is moving towards the door trigger
+        Vector2 toDoor = ((Vector2)transform.position - (Vector2)player.transform.position).normalized;
+
+        float dotProduct = Vector2.Dot(playerDirection.normalized, toDoor);
+        Debug.Log($"📏 Dot Product: {dotProduct} (Higher means facing correctly)");
+
+        // Loosen the angle restriction to make it less strict
+        return dotProduct > 0.2f;
+    }
+
+    private IEnumerator TransitionScene()
+    {
+        yield return new WaitForSeconds(0.1f); // Small delay to avoid accidental re-triggering
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

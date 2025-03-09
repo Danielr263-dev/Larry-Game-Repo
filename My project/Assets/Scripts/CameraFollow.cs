@@ -85,3 +85,4 @@ public class CameraFollow : MonoBehaviour
         return new Vector3(clampedX, clampedY, position.z);
     }
 }
+

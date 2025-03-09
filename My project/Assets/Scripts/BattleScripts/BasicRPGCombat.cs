@@ -8,6 +8,7 @@ public class AutoRPGSimulation : MonoBehaviour
     public HealthBar enemyHealthBar;
     public Text combatLogText;
     public GameObject attackSelectionUI; // Reference to Attack Selection UI Panel
+    public AudioSource battleMusic; // Reference to AudioSource for battle music
     
     private int playerMaxHealth = 100;
     private int enemyMaxHealth = 80;
@@ -29,6 +30,13 @@ public class AutoRPGSimulation : MonoBehaviour
         attackSelection = FindObjectOfType<AttackSelection>(); // Get reference to AttackSelection
 
         attackSelectionUI.SetActive(true); // Ensure attack selection is visible at the start
+
+        // Start battle music if assigned
+        if (battleMusic != null)
+        {
+            battleMusic.loop = true; // Ensure looping
+            battleMusic.Play();
+        }
 
         StartCoroutine(StartBattleSequence());
     }
@@ -133,6 +141,12 @@ public class AutoRPGSimulation : MonoBehaviour
         else
         {
             UpdateCombatLog("You have been defeated...");
+        }
+
+        // Stop the battle music when the battle ends
+        if (battleMusic != null)
+        {
+            battleMusic.Stop();
         }
 
         // Hide UI at the end of battle

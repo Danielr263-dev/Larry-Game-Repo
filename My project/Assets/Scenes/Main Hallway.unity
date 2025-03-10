@@ -462,7 +462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 92231297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86bf753c940bd0e4989ec8c78a9b6be7, type: 3}
+  m_Script: {fileID: 11500000, guid: d924cee1c4d947141bd213fa3c461bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 1328938999}
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Lore Room
   exitName: Spawn_ToLorefromHallway
+  newMusic: {fileID: 0}
 --- !u!1 &580132368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 580132368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c89f2dc36a93fc43b55931db3252013, type: 3}
+  m_Script: {fileID: 11500000, guid: 901c8ccc31fb68643a8848a6714c74cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 1388579323}
@@ -1638,6 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: TBD Room Scene
   exitName: SpawnPointTBD
+  newMusic: {fileID: 0}
 --- !u!1 &654714723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Starter Room
   exitName: SpawnfromHall(Starter)
+  newMusic: {fileID: 0}
 --- !u!61 &1278478725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2793,6 +2796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Weapon Room
   exitName: Spawnpoint_toWeapon
+  newMusic: {fileID: 0}
 --- !u!1 &1458618472
 GameObject:
   m_ObjectHideFlags: 0
@@ -3017,7 +3021,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525999253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b32333e245d0d34ab489ca6f4459022, type: 3}
+  m_Script: {fileID: 11500000, guid: b1abd436119588b42a8ac96fbae88b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 467250289}
@@ -3439,7 +3443,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2022390049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e1ce6247a2fe141903465cb39e3985, type: 3}
+  m_Script: {fileID: 11500000, guid: ba44a75a3b422254b919a0f381b569cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 72842101}

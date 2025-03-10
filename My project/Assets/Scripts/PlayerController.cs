@@ -122,6 +122,10 @@ public class PlayerController : MonoBehaviour
     }
 }
 
+    public bool IsMoving()
+{
+    return movement.sqrMagnitude > 0; // Checks if player is actually moving
+}
 
 
     public float GetMoveX()

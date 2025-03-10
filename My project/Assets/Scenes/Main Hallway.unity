@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 92231300}
   - component: {fileID: 92231303}
   - component: {fileID: 92231304}
+  - component: {fileID: 92231305}
   m_Layer: 0
   m_Name: Hallway4
   m_TagString: Untagged
@@ -484,6 +485,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: Enemy1
+--- !u!114 &92231305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92231297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: Enemy1
 --- !u!1 &152094779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1195,7 @@ GameObject:
   - component: {fileID: 580132371}
   - component: {fileID: 580132374}
   - component: {fileID: 580132375}
+  - component: {fileID: 580132376}
   m_Layer: 0
   m_Name: Hallway2
   m_TagString: Untagged
@@ -1345,6 +1361,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: Enemy1
+--- !u!114 &580132376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580132368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: Enemy1
 --- !u!1 &582104066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,6 +2933,7 @@ GameObject:
   - component: {fileID: 1525999255}
   - component: {fileID: 1525999260}
   - component: {fileID: 1525999261}
+  - component: {fileID: 1525999262}
   m_Layer: 0
   m_Name: Hallway1
   m_TagString: Untagged
@@ -3067,6 +3098,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: Enemy1
+--- !u!114 &1525999262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525999253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: Enemy1
 --- !u!1 &1669278432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,6 +3383,7 @@ GameObject:
   - component: {fileID: 2022390052}
   - component: {fileID: 2022390055}
   - component: {fileID: 2022390056}
+  - component: {fileID: 2022390057}
   m_Layer: 0
   m_Name: Hallway3
   m_TagString: Untagged
@@ -3503,6 +3549,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: Enemy1
+--- !u!114 &2022390057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022390049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: Enemy1
 --- !u!1 &2136306964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,6 +3609,7 @@ GameObject:
   - component: {fileID: 2141545467}
   - component: {fileID: 2141545468}
   - component: {fileID: 2141545469}
+  - component: {fileID: 2141545470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3733,6 +3794,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2.5
   runSpeed: 5
+--- !u!114 &2141545470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141545462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7a059b602cee2499c55c29fd28eab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

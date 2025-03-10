@@ -8,7 +8,7 @@ public class IntroDialogue : MonoBehaviour
     public GameObject blackScreen; // Black screen UI image
     public AudioSource textBeepSound; // Beep sound effect for typing
     public AudioSource backgroundMusic; // Background music (starts AFTER dialogue)
-    public float textSpeed = 0.08f; // **Slower speed to prevent beep cutoff**
+    public float textSpeed = 0.08f; // Slower speed to prevent beep cutoff
     public float fadeSpeed = 1.5f; // Speed of fading screen
     private bool flickerEffect = false; // Controls flickering glitch effect
 
@@ -22,6 +22,9 @@ public class IntroDialogue : MonoBehaviour
 
     void Start()
     {
+        // Ensure the dialogue is on one single line (disable word wrapping)
+        dialogueText.enableWordWrapping = false;
+        dialogueText.overflowMode = TMPro.TextOverflowModes.Overflow;
         StartCoroutine(PlayIntroSequence());
     }
 
@@ -30,10 +33,10 @@ public class IntroDialogue : MonoBehaviour
         // Start with a fully black screen
         blackScreen.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 1);
 
-        // Start displaying dialogue immediately
+        // Display each dialogue line one by one
         yield return StartCoroutine(DisplayDialogue());
 
-        // Hide the dialogue after it ends
+        // Hide the dialogue after all lines are shown
         dialogueText.gameObject.SetActive(false);
 
         // Start background music AFTER dialogue fully disappears
@@ -53,7 +56,7 @@ public class IntroDialogue : MonoBehaviour
             // Enable glitch effect only for the "…Who am I?" line.
             flickerEffect = line.Contains("…Who am I?");
             yield return StartCoroutine(TypeText(line));
-            yield return new WaitForSeconds(1.5f); // Small pause before next line
+            yield return new WaitForSeconds(1.5f); // Pause before the next line
         }
     }
 
@@ -68,7 +71,7 @@ public class IntroDialogue : MonoBehaviour
             textBeepSound.Play();
         }
 
-        // Type out the text letter-by-letter
+        // Type out the text letter-by-letter on a single line
         for (int i = 0; i < text.Length; i++)
         {
             dialogueText.text += text[i];
@@ -100,12 +103,12 @@ public class IntroDialogue : MonoBehaviour
                 {
                     dialogueText.text = text;
                 }
-                float waitTime = textSpeed; // You can adjust this small flicker duration if desired
+                float waitTime = textSpeed; // Adjust flicker duration if desired
                 elapsed += waitTime;
                 yield return new WaitForSeconds(waitTime);
             }
-            // Ensure the final display is the normal text
-            dialogueText.text = text;
+            // Final display: keep "Who" in red
+            dialogueText.text = text.Replace("Who", "<color=#FF0000>Who</color>");
         }
     }
 

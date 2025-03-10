@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 92231301}
   - component: {fileID: 92231300}
   - component: {fileID: 92231303}
+  - component: {fileID: 92231304}
   m_Layer: 0
   m_Name: Hallway4
   m_TagString: Untagged
@@ -420,7 +421,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000009536743, y: 0}
@@ -471,6 +472,18 @@ MonoBehaviour:
   pointD: {fileID: 825855811}
   speed: 2
   pauseDuration: 1
+--- !u!114 &92231304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92231297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &152094779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1179,7 @@ GameObject:
   - component: {fileID: 580132372}
   - component: {fileID: 580132371}
   - component: {fileID: 580132374}
+  - component: {fileID: 580132375}
   m_Layer: 0
   m_Name: Hallway2
   m_TagString: Untagged
@@ -1269,7 +1283,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000009536743, y: 0}
@@ -1319,6 +1333,18 @@ MonoBehaviour:
   pointC: {fileID: 80841301}
   speed: 2
   pauseDuration: 1
+--- !u!114 &580132375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580132368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582104066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +2902,7 @@ GameObject:
   - component: {fileID: 1525999259}
   - component: {fileID: 1525999255}
   - component: {fileID: 1525999260}
+  - component: {fileID: 1525999261}
   m_Layer: 0
   m_Name: Hallway1
   m_TagString: Untagged
@@ -3006,7 +3033,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000009536743, y: 0}
@@ -3028,6 +3055,18 @@ MonoBehaviour:
   pointB: {fileID: 803175527}
   speed: 2
   pauseDuration: 1
+--- !u!114 &1525999261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525999253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1669278432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,6 +3337,7 @@ GameObject:
   - component: {fileID: 2022390053}
   - component: {fileID: 2022390052}
   - component: {fileID: 2022390055}
+  - component: {fileID: 2022390056}
   m_Layer: 0
   m_Name: Hallway3
   m_TagString: Untagged
@@ -3401,7 +3441,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000009536743, y: 0}
@@ -3451,6 +3491,18 @@ MonoBehaviour:
   pointC: {fileID: 1458618472}
   speed: 2
   pauseDuration: 1
+--- !u!114 &2022390056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022390049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415f650f3d7f87f4b84ecc4009ce0f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2136306964
 GameObject:
   m_ObjectHideFlags: 0

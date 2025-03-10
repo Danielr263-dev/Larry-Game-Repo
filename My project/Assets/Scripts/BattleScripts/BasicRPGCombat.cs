@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AutoRPGSimulation : MonoBehaviour
@@ -60,14 +61,12 @@ public class AutoRPGSimulation : MonoBehaviour
     {
         while (!battleOver)
         {
-            // Wait for player attack selection
             waitingForPlayerInput = true;
             UpdateCombatLog("Player is thinking...");
-            yield return new WaitUntil(() => !waitingForPlayerInput); // Wait for button press
+            yield return new WaitUntil(() => !waitingForPlayerInput); // Wait for player input
 
             if (battleOver) yield break;
 
-            // Enemy's Turn
             yield return StartCoroutine(EnemyAttackSequence());
         }
     }
@@ -91,9 +90,7 @@ public class AutoRPGSimulation : MonoBehaviour
             yield break;
         }
 
-        // Hide attack selection when the enemy is about to attack
-        attackSelectionUI.SetActive(false);
-
+        attackSelectionUI.SetActive(false); // Hide UI for enemy turn
         yield return StartCoroutine(EnemyAttackSequence());
     }
 
@@ -118,14 +115,9 @@ public class AutoRPGSimulation : MonoBehaviour
         }
         else
         {
-            // Reduce the cooldown after the enemy's turn
             attackSelection.ReduceCooldown();
-
-            // Enable attack selection for the next player turn
             waitingForPlayerInput = true;
             UpdateCombatLog("Player is thinking...");
-            
-            // Show attack selection when it's the player's turn again
             attackSelectionUI.SetActive(true);
         }
     }
@@ -143,14 +135,30 @@ public class AutoRPGSimulation : MonoBehaviour
             UpdateCombatLog("You have been defeated...");
         }
 
-        // Stop the battle music when the battle ends
         if (battleMusic != null)
         {
             battleMusic.Stop();
         }
 
-        // Hide UI at the end of battle
         attackSelectionUI.SetActive(false);
+
+        // 🔹 Transition back to the previous scene
+        StartCoroutine(ReturnToPreviousScene());
+    }
+
+    IEnumerator ReturnToPreviousScene()
+    {
+        yield return new WaitForSeconds(3f); // Small delay before switching back
+
+        string previousScene = PlayerPrefs.GetString("PreviousScene", "MainHallway");
+        float playerX = PlayerPrefs.GetFloat("PlayerPosX", 0);
+        float playerY = PlayerPrefs.GetFloat("PlayerPosY", 0);
+
+        // Store position so PlayerRespawn.cs can place them correctly
+        PlayerPrefs.SetFloat("RespawnX", playerX);
+        PlayerPrefs.SetFloat("RespawnY", playerY);
+
+        SceneManager.LoadScene(previousScene); // Load the previous scene
     }
 
     void UpdateCombatLog(string message)

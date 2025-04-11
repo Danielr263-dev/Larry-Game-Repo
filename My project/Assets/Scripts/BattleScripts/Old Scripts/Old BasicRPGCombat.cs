@@ -2,17 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//this is the old BasicRPGCombat script that used enemy types prior to battleEnemy types (the new ones with animations and stuff). Preserved exactly as it was. Functional.
 
-public class AutoRPGSimulation : MonoBehaviour
+/*public class AutoRPGSimulation : MonoBehaviour
 {
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
     public Text combatLogText;
     public GameObject attackSelectionUI; // Reference to Attack Selection UI Panel
     public AudioSource battleMusic; // Reference to AudioSource for battle music
-    public GameObject battleEnemy; // Reference to the enemy GameObject
-    public float specialAttackChance = 0.3f; // Easily adjustable special attack chance
-
+    
     private int playerMaxHealth = 100;
     private int enemyMaxHealth = 80;
 
@@ -21,8 +20,6 @@ public class AutoRPGSimulation : MonoBehaviour
     private bool battleOver = false;
     private bool waitingForPlayerInput = true; // Ensures player chooses an attack before continuing
     private AttackSelection attackSelection; // Reference to AttackSelection script
-
-    private EnemyAnimatorController enemyAnimator; // Reference to animator script
 
     void Start()
     {
@@ -41,12 +38,6 @@ public class AutoRPGSimulation : MonoBehaviour
         {
             battleMusic.loop = true; // Ensure looping
             battleMusic.Play();
-        }
-
-        // Get the animator controller attached to battleEnemy
-        if (battleEnemy != null)
-        {
-            enemyAnimator = battleEnemy.GetComponent<EnemyAnimatorController>();
         }
 
         StartCoroutine(StartBattleSequence());
@@ -96,9 +87,6 @@ public class AutoRPGSimulation : MonoBehaviour
 
         if (enemyCurrentHealth <= 0)
         {
-            if (enemyAnimator != null)
-                enemyAnimator.PerformAction(EnemyAnimatorController.EnemyAction.death);
-
             EndBattle(true);
             yield break;
         }
@@ -114,24 +102,10 @@ public class AutoRPGSimulation : MonoBehaviour
         UpdateCombatLog("Enemy is thinking...");
         yield return new WaitForSeconds(2f);
 
-        bool useSpecial = Random.value < specialAttackChance;
-
-        if (useSpecial)
-        {
-            UpdateCombatLog("Enemy uses Special Attack!");
-            if (enemyAnimator != null)
-                enemyAnimator.PerformAction(EnemyAnimatorController.EnemyAction.specialAttack);
-        }
-        else
-        {
-            UpdateCombatLog("Enemy uses Basic Attack!");
-            if (enemyAnimator != null)
-                enemyAnimator.PerformAction(EnemyAnimatorController.EnemyAction.basicAttack);
-        }
-
+        UpdateCombatLog("Enemy uses Basic Attack!");
         yield return new WaitForSeconds(2f);
 
-        int enemyDamage = useSpecial ? Random.Range(20, 30) : Random.Range(10, 15);
+        int enemyDamage = Random.Range(10, 15);
         playerCurrentHealth -= enemyDamage;
         playerHealthBar.SetHealth(playerCurrentHealth);
         yield return new WaitForSeconds(1.5f);
@@ -193,3 +167,4 @@ public class AutoRPGSimulation : MonoBehaviour
         combatLogText.text = message;
     }
 }
+*/

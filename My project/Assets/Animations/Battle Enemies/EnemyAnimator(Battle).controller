@@ -36,19 +36,19 @@ AnimatorController:
   m_Name: EnemyAnimator(Battle)
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: basicAttackTrigger
+  - m_Name: basicAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: specialAttackTrigger
+  - m_Name: specialAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: deathTrigger
+  - m_Name: death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -185,7 +185,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: basicAttackTrigger
+    m_ConditionEvent: basicAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3982504274689083427}
@@ -236,7 +236,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: specialAttackTrigger
+    m_ConditionEvent: specialAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2415074846412147407}
@@ -261,7 +261,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: deathTrigger
+    m_ConditionEvent: death
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5519739305885882123}

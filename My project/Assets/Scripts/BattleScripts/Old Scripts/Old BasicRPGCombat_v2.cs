@@ -2,20 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+//this is the updated BasicRPGCombat script with ONLY the battleEnemy animations working, not battlePlayer animations included. 
+/*
 public class AutoRPGSimulation : MonoBehaviour
 {
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
     public Text combatLogText;
-    public GameObject attackSelectionUI;
-    public AudioSource battleMusic;
-    public GameObject battleEnemy;
-    public GameObject battlePlayer;
-    public float specialAttackChance = 0.3f;
-
-    public string playerObjectName = "battlePlayer"; // Replace with your player's name
-    public string enemyObjectName = "battleEnemy"; // Replace with your enemy's name
+    public GameObject attackSelectionUI; // Reference to Attack Selection UI Panel
+    public AudioSource battleMusic; // Reference to AudioSource for battle music
+    public GameObject battleEnemy; // Reference to the enemy GameObject
+    public float specialAttackChance = 0.3f; // Easily adjustable special attack chance
 
     private int playerMaxHealth = 100;
     private int enemyMaxHealth = 80;
@@ -23,10 +20,10 @@ public class AutoRPGSimulation : MonoBehaviour
     private int playerCurrentHealth;
     private int enemyCurrentHealth;
     private bool battleOver = false;
-    private bool waitingForPlayerInput = true;
-    private AttackSelection attackSelection;
-    private EnemyAnimatorController enemyAnimator;
-    private PlayerAnimatorController playerAnimator;
+    private bool waitingForPlayerInput = true; // Ensures player chooses an attack before continuing
+    private AttackSelection attackSelection; // Reference to AttackSelection script
+
+    private EnemyAnimatorController enemyAnimator; // Reference to animator script
 
     void Start()
     {
@@ -36,31 +33,21 @@ public class AutoRPGSimulation : MonoBehaviour
         playerHealthBar.SetMaxHealth(playerMaxHealth);
         enemyHealthBar.SetMaxHealth(enemyMaxHealth);
 
-        attackSelection = FindObjectOfType<AttackSelection>();
-        attackSelectionUI.SetActive(true);
+        attackSelection = FindObjectOfType<AttackSelection>(); // Get reference to AttackSelection
 
+        attackSelectionUI.SetActive(true); // Ensure attack selection is visible at the start
+
+        // Start battle music if assigned
         if (battleMusic != null)
         {
-            battleMusic.loop = true;
+            battleMusic.loop = true; // Ensure looping
             battleMusic.Play();
         }
 
-        // Find the player and enemy objects by name
-        battlePlayer = GameObject.Find(playerObjectName);
-        battleEnemy = GameObject.Find(enemyObjectName);
-
-        // Debugging: Verify that the objects were found
-        if (battlePlayer == null) Debug.LogError("Player object not found with name: " + playerObjectName);
-        if (battleEnemy == null) Debug.LogError("Enemy object not found with name: " + enemyObjectName);
-
+        // Get the animator controller attached to battleEnemy
         if (battleEnemy != null)
         {
             enemyAnimator = battleEnemy.GetComponent<EnemyAnimatorController>();
-        }
-
-        if (battlePlayer != null)
-        {
-            playerAnimator = battlePlayer.GetComponent<PlayerAnimatorController>();
         }
 
         StartCoroutine(StartBattleSequence());
@@ -87,7 +74,7 @@ public class AutoRPGSimulation : MonoBehaviour
         {
             waitingForPlayerInput = true;
             UpdateCombatLog("Player is thinking...");
-            yield return new WaitUntil(() => !waitingForPlayerInput);
+            yield return new WaitUntil(() => !waitingForPlayerInput); // Wait for player input
 
             if (battleOver) yield break;
 
@@ -100,13 +87,7 @@ public class AutoRPGSimulation : MonoBehaviour
         if (battleOver) yield break;
 
         yield return new WaitForSeconds(1f);
-        UpdateCombatLog($"Player uses {(isMelee ? "Basic" : "Special")} Attack!");
-
-        if (playerAnimator != null)
-        {
-            playerAnimator.PerformAction(isMelee ? PlayerAnimatorController.PlayerAction.basicAttack : PlayerAnimatorController.PlayerAction.specialAttack);
-        }
-
+        UpdateCombatLog($"Player uses {(isMelee ? "Melee" : "Special")} Attack!");
         yield return new WaitForSeconds(2f);
 
         int playerDamage = isMelee ? Random.Range(10, 20) : Random.Range(20, 30);
@@ -123,7 +104,7 @@ public class AutoRPGSimulation : MonoBehaviour
             yield break;
         }
 
-        attackSelectionUI.SetActive(false);
+        attackSelectionUI.SetActive(false); // Hide UI for enemy turn
         yield return StartCoroutine(EnemyAttackSequence());
     }
 
@@ -188,21 +169,24 @@ public class AutoRPGSimulation : MonoBehaviour
         }
 
         attackSelectionUI.SetActive(false);
+
+        // 🔹 Transition back to the previous scene
         StartCoroutine(ReturnToPreviousScene());
     }
 
     IEnumerator ReturnToPreviousScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); // Small delay before switching back
 
         string previousScene = PlayerPrefs.GetString("PreviousScene", "MainHallway");
         float playerX = PlayerPrefs.GetFloat("PlayerPosX", 0);
         float playerY = PlayerPrefs.GetFloat("PlayerPosY", 0);
 
+        // Store position so PlayerRespawn.cs can place them correctly
         PlayerPrefs.SetFloat("RespawnX", playerX);
         PlayerPrefs.SetFloat("RespawnY", playerY);
 
-        SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene(previousScene); // Load the previous scene
     }
 
     void UpdateCombatLog(string message)
@@ -210,3 +194,4 @@ public class AutoRPGSimulation : MonoBehaviour
         combatLogText.text = message;
     }
 }
+*/

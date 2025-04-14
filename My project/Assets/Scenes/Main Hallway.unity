@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 92231303}
   - component: {fileID: 92231304}
   - component: {fileID: 92231305}
+  - component: {fileID: 92231306}
   m_Layer: 0
   m_Name: Hallway4
   m_TagString: Untagged
@@ -574,6 +575,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &92231306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92231297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8afabf3951eed042a282b33847a7000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: 
 --- !u!1 &152094779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1362,7 @@ GameObject:
   - component: {fileID: 580132374}
   - component: {fileID: 580132375}
   - component: {fileID: 580132376}
+  - component: {fileID: 580132377}
   m_Layer: 0
   m_Name: Hallway2
   m_TagString: Untagged
@@ -1525,6 +1540,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &580132377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580132368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8afabf3951eed042a282b33847a7000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: 
 --- !u!1 &582104066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3574,7 @@ GameObject:
   - component: {fileID: 1525999260}
   - component: {fileID: 1525999261}
   - component: {fileID: 1525999262}
+  - component: {fileID: 1525999263}
   m_Layer: 0
   m_Name: Hallway1
   m_TagString: Untagged
@@ -3722,6 +3751,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1525999263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525999253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8afabf3951eed042a282b33847a7000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: 
 --- !u!1 &1576077611
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,6 +4421,7 @@ GameObject:
   - component: {fileID: 2022390055}
   - component: {fileID: 2022390056}
   - component: {fileID: 2022390057}
+  - component: {fileID: 2022390058}
   m_Layer: 0
   m_Name: Hallway3
   m_TagString: Untagged
@@ -4556,6 +4599,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33570e47e90466d4eba904fec9d5be37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2022390058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022390049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8afabf3951eed042a282b33847a7000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyID: 
 --- !u!1 &2059927699
 GameObject:
   m_ObjectHideFlags: 0

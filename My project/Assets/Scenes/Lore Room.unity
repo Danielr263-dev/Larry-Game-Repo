@@ -1716,6 +1716,7 @@ GameObject:
   - component: {fileID: 2032389798}
   - component: {fileID: 2032389799}
   - component: {fileID: 2032389800}
+  - component: {fileID: 2032389801}
   m_Layer: 0
   m_Name: Hallway1
   m_TagString: Enemy
@@ -1893,6 +1894,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyID: 
+--- !u!114 &2032389801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032389792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db375f7dc617994daefc6f90e1d0f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105720628
 GameObject:
   m_ObjectHideFlags: 0

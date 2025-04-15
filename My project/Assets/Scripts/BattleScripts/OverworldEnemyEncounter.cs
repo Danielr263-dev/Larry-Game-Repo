@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class OverworldEnemyEncounter : MonoBehaviour
 {
     public string overworldEnemyID; // Public variable to store this enemy's unique ID.
-    public string combatSceneName = "CombatScene"; // Public variable to store the name of your combat scene.
+    public string combatSceneName = "FightScene"; // Public variable to store the name of your combat scene.
     public string playerTag = "Player"; // Public variable to store the tag of your player GameObject.
     public string enemyTag = "Enemy";  //Public variable to store the tag of enemy game object
 

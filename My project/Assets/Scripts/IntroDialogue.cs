@@ -11,6 +11,7 @@ public class IntroDialogue : MonoBehaviour
     public float textSpeed = 0.08f; // Slower speed to prevent beep cutoff
     public float fadeSpeed = 1.5f; // Speed of fading screen
     private bool flickerEffect = false; // Controls flickering glitch effect
+    private static bool introHasPlayed = false;
 
     private string[] dialogueLines =
     {
@@ -22,11 +23,23 @@ public class IntroDialogue : MonoBehaviour
 
     void Start()
     {
-        // Ensure the dialogue is on one single line (disable word wrapping)
-        dialogueText.enableWordWrapping = false;
-        dialogueText.overflowMode = TMPro.TextOverflowModes.Overflow;
-        StartCoroutine(PlayIntroSequence());
+    if (introHasPlayed)
+    {
+        dialogueText.gameObject.SetActive(false);
+        blackScreen.SetActive(false);
+        if (backgroundMusic != null)
+            backgroundMusic.Play(); // Optional: play music if skipping intro
+        return;
     }
+
+    introHasPlayed = true;
+
+    // Continue as normal
+    dialogueText.enableWordWrapping = false;
+    dialogueText.overflowMode = TMPro.TextOverflowModes.Overflow;
+    StartCoroutine(PlayIntroSequence());
+    }
+
 
     IEnumerator PlayIntroSequence()
     {

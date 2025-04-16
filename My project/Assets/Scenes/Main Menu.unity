@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 1285618369}
   - component: {fileID: 1285618371}
   - component: {fileID: 1285618370}
+  - component: {fileID: 1285618372}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -710,6 +711,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285618368}
   m_CullTransparentMesh: 1
+--- !u!114 &1285618372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285618368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3ac282d32aae04e96e426a4f73c115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 1285618370}
+  glitchDuration: 1.5
+  glitchRate: 0.05
+  glitchInterval: 3
 --- !u!1 &1512691156
 GameObject:
   m_ObjectHideFlags: 0

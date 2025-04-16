@@ -21,7 +21,7 @@ public class AutoRPGSimulation : MonoBehaviour
 
     // Private variables to manage game state and data.
     private int playerMaxHealth = 100; // Maximum health of the player.
-    private int enemyMaxHealth = 80; // Maximum health of the enemy.
+    private int enemyMaxHealth = 100; // Maximum health of the enemy.
     private int playerCurrentHealth; // Current health of the player.
     private int enemyCurrentHealth; // Current health of the enemy.
     private bool battleOver = false; // Flag to indicate if the battle is over.
@@ -170,7 +170,7 @@ public class AutoRPGSimulation : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // Calculate and apply damage to the player.
-        int enemyDamage = useSpecial ? Random.Range(20, 30) : Random.Range(10, 15);
+        int enemyDamage = useSpecial ? Random.Range(20, 30) : Random.Range(10, 20);
         playerCurrentHealth -= enemyDamage;
         playerHealthBar.SetHealth(playerCurrentHealth);
         yield return new WaitForSeconds(1.5f);

@@ -192,26 +192,31 @@ public class AutoRPGSimulation : MonoBehaviour
     // Method to end the battle.
     void EndBattle(bool playerWon)
     {
-        battleOver = true; // Set the battle over flag to true.
+    battleOver = true;
 
-        // Log the battle result.
-        if (playerWon)
-        {
-            UpdateCombatLog("Enemy defeated! You win!");
-        }
-        else
-        {
-            UpdateCombatLog("You have been defeated...");
-        }
+    if (playerWon)
+    {
+        UpdateCombatLog("Enemy defeated! You win!");
 
-        // Stop the battle music.
-        if (battleMusic != null)
+        // ✅ Mark enemy as defeated using the ID from PlayerPrefs
+        string defeatedID = PlayerPrefs.GetString("CombatEnemyID", "");
+        if (!string.IsNullOrEmpty(defeatedID) && GameStateManager.instance != null)
         {
-            battleMusic.Stop();
+            GameStateManager.instance.MarkEnemyAsDefeated(defeatedID);
         }
+    }
+    else
+    {
+        UpdateCombatLog("You have been defeated...");
+    }
 
-        attackSelectionUI.SetActive(false); // Hide attack selection UI.
-        StartCoroutine(ReturnToPreviousScene()); // Start the return to previous scene sequence.
+    if (battleMusic != null)
+    {
+        battleMusic.Stop();
+    }
+
+    attackSelectionUI.SetActive(false);
+    StartCoroutine(ReturnToPreviousScene());
     }
 
     // Coroutine to return to the previous scene.

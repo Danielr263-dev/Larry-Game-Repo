@@ -3,50 +3,48 @@ using UnityEngine.SceneManagement;
 
 public class OverworldEnemyEncounter : MonoBehaviour
 {
-    public string overworldEnemyID; // Public variable to store this enemy's unique ID.
-    public string combatSceneName = "FightScene"; // Public variable to store the name of your combat scene.
-    public string playerTag = "Player"; // Public variable to store the tag of your player GameObject.
-    public string enemyTag = "Enemy";  //Public variable to store the tag of enemy game object
+    public string overworldEnemyID; // Unique enemy ID
+    public string combatSceneName = "FightScene"; // Name of your battle scene
+    public string playerTag = "Player"; 
+    public string enemyTag = "Enemy";  
 
     void Start()
     {
-        // Get the unique ID from the EnemyIDGenerator script attached to this enemy.
+        // Get unique ID from EnemyIDGenerator
         EnemyIDGenerator idGenerator = GetComponent<EnemyIDGenerator>();
         if (idGenerator != null)
         {
             overworldEnemyID = idGenerator.enemyID;
+
+            // ✅ NEW: Check if this enemy was defeated already
+            if (GameStateManager.instance != null && GameStateManager.instance.IsEnemyDefeated(overworldEnemyID))
+            {
+                gameObject.SetActive(false); // Disable this enemy if it was defeated
+            }
         }
         else
         {
-            // Error handling:  If the EnemyIDGenerator is missing, log an error.
             Debug.LogError("EnemyIDGenerator not found on this GameObject!");
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)  //use trigger
+    void OnTriggerEnter2D(Collider2D other)
     {
-         // Check if the entering collider is the player OR an enemy.
         if (other.CompareTag(playerTag) || other.CompareTag(enemyTag))
         {
-            // Store the enemy's unique ID in PlayerPrefs so the combat scene can access it.
+            // Save enemy ID and scene name for battle scene
             PlayerPrefs.SetString("CombatEnemyID", overworldEnemyID);
-            // Store the name of the current scene so we can return to it after combat.
             PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
-            // Load the combat scene.
             SceneManager.LoadScene(combatSceneName);
         }
     }
 
-     void OnCollisionEnter2D(Collision2D collision)  //use collision
+    void OnCollisionEnter2D(Collision2D collision)
     {
-         // Check if the entering collider is the player OR an enemy.
-        if (collision.gameObject.CompareTag(playerTag) ||  collision.gameObject.CompareTag(enemyTag))
+        if (collision.gameObject.CompareTag(playerTag) || collision.gameObject.CompareTag(enemyTag))
         {
-            // Store the enemy's unique ID in PlayerPrefs so the combat scene can access it.
             PlayerPrefs.SetString("CombatEnemyID", overworldEnemyID);
-            // Store the name of the current scene so we can return to it after combat.
             PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
-            // Load the combat scene.
             SceneManager.LoadScene(combatSceneName);
         }
     }
